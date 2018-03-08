@@ -1,23 +1,24 @@
-<mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav" fixedInViewport="False" fixedTopGap="0" fixedBottomGap="0">
-
+<mat-sidenav-container color='primary' class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="false" class="example-sidenav" fixedInViewport="False" fixedTopGap="0" fixedBottomGap="0">
+        <mat-toolbar>
+            Filters
+        </mat-toolbar>
     </mat-sidenav>
 
     <mat-sidenav-content>
+        <mat-toolbar>
+            <mat-slide-toggle (click)="sidenav.toggle()">Toggle</mat-slide-toggle> &nbsp;
+            <mat-chip-list #chipList>
+                <mat-chip *ngFor="let filter of filters" [selectable]="selectable" [removable]="removable" (remove)="remove(fruit)">
+                    {{filter.name}}
+                    <mat-icon matChipRemove *ngIf="filter.removable">cancel</mat-icon>
+                </mat-chip>
+            </mat-chip-list>
+        </mat-toolbar>
         <p>
-            <button mat-button (click)="sidenav.toggle()">Toggle</button>
+            <!--<button mat-button (click)="sidenav.toggle()">Toggle</button>-->
+            Grid
         </p>
-        <p>
-            <button mat-button (click)="sidenav.toggle()">Toggle</button>
-        </p>
-        <p>
-            <button mat-button (click)="sidenav.toggle()">Toggle</button>
-        </p>
-        <p>
-            <button mat-button (click)="sidenav.toggle()">Toggle</button>
-        </p>
-        <p>
-            <button mat-button (click)="sidenav.toggle()">Toggle</button>
-        </p>
+
     </mat-sidenav-content>
 </mat-sidenav-container>

@@ -9,14 +9,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatChipsModule } from '@angular/material/chips';
+
 
 @NgModule({
   imports: [MatButtonModule, MatCheckboxModule, MatIconModule,
     MatToolbarModule, BrowserAnimationsModule, MatMenuModule,
-    MatGridListModule, MatSidenavModule],
+    MatGridListModule, MatSidenavModule, MatSlideToggleModule,
+    MatChipsModule],
   exports: [MatButtonModule, MatCheckboxModule, MatIconModule,
     MatToolbarModule, BrowserAnimationsModule, MatMenuModule,
-    MatGridListModule, MatSidenavModule],
+    MatGridListModule, MatSidenavModule, MatSlideToggleModule,
+    MatChipsModule],
 })
 export class MaterialModule {
 }

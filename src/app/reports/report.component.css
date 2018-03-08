@@ -7,11 +7,14 @@
 }
 
 .example-sidenav {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   width: 200px;
-  background: rgba(56, 153, 243, 0.5);
+  /*background:#3f51b5;
+  align-items: center;
+  display: flex;
+  justify-content: center;*/
+  border-color: #3f51b5;
 }
 
 .example-header {

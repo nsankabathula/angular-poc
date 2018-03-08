@@ -3,10 +3,8 @@
   flex-direction: column;
   display: flex;
   height:92%;
-  width:99%;
-  border: 0px solid green;/*debug*/
-  padding: 2px;
-  margin-bottom: 16px;
+  width:99.15%;
+  border: 0px solid green;/*debug*/ 
 }
 
 .example-sidenav {

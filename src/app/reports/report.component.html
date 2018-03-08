@@ -1,5 +1,23 @@
-<mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
-        {{tile.text}}
-    </mat-grid-tile>
-</mat-grid-list>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav" fixedInViewport="False" fixedTopGap="0" fixedBottomGap="0">
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <p>
+            <button mat-button (click)="sidenav.toggle()">Toggle</button>
+        </p>
+        <p>
+            <button mat-button (click)="sidenav.toggle()">Toggle</button>
+        </p>
+        <p>
+            <button mat-button (click)="sidenav.toggle()">Toggle</button>
+        </p>
+        <p>
+            <button mat-button (click)="sidenav.toggle()">Toggle</button>
+        </p>
+        <p>
+            <button mat-button (click)="sidenav.toggle()">Toggle</button>
+        </p>
+    </mat-sidenav-content>
+</mat-sidenav-container>

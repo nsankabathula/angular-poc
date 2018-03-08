@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material';
+
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-report',
@@ -8,10 +9,6 @@ import { MatMenuTrigger } from '@angular/material';
 })
 export class AppReportComponent {
 
-    tiles = [
-        { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
-        { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
-        { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
-        { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
-    ];
+    constructor() {
+    }
 }

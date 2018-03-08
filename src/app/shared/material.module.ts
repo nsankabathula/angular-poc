@@ -8,15 +8,15 @@ import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/mat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   imports: [MatButtonModule, MatCheckboxModule, MatIconModule,
     MatToolbarModule, BrowserAnimationsModule, MatMenuModule,
-    MatGridListModule],
+    MatGridListModule, MatSidenavModule],
   exports: [MatButtonModule, MatCheckboxModule, MatIconModule,
     MatToolbarModule, BrowserAnimationsModule, MatMenuModule,
-    MatGridListModule],
+    MatGridListModule, MatSidenavModule],
 })
 export class MaterialModule {
 }

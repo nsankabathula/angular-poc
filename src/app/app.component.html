@@ -2,12 +2,11 @@
 
 
 
-<mat-grid-list cols="1" rowHeight="4:1">
-    <mat-grid-tile-header>
-        <app-nav></app-nav>
-    </mat-grid-tile-header>
-    <mat-grid-tile>
+<ng-container>
+
+    <app-nav></app-nav>
+    <ng-container>
         <router-outlet></router-outlet>
-    </mat-grid-tile>
-    <!--<mat-grid-tile-footer> Footer</mat-grid-tile-footer>-->
-</mat-grid-list>
+    </ng-container>
+
+</ng-container>

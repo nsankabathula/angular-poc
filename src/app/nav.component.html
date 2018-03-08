@@ -1,25 +1,33 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
         <span>
-            <i class="material-icons md-48">face</i>
-            &nbsp; FEATR
+            <button mat-icon-button aria-label="home" routerLink="/home">
+                <i class="material-icons md-48">face</i>
+            </button>
+            App Name
             <!--Futures Exchanges Audit Trail Reporting-->
         </span>
 
-        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-        <mat-menu #menu="matMenu" overlapTrigger=f alse>
-            <button mat-menu-item>Item 1</button>
-            <button mat-menu-item>Item 2</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <i class="material-icons md-48">more_vert</i>
+        </button>
+        <mat-menu #menu="matMenu" overlapTrigger=false yPosition="below" xPosition="after">
+
+            <button mat-menu-item routerLink="/home">Home</button>
+            <button mat-menu-item routerLink="/reports">Report</button>
         </mat-menu>
 
 
         <span class="example-fill-remaining-space"></span>
 
         <button mat-button>About</button>
+        <button mat-icon-button aria-label="profile">
+            <i class="material-icons md-48">perm_identity</i>
+        </button>
 
-        <i class="material-icons md-48">perm_identity</i> &nbsp;
-
-        <i class="material-icons md-48">help</i>
+        <button mat-icon-button aria-label="help">
+            <i class="material-icons md-48">help</i>
+        </button>
 
     </mat-toolbar-row>
 </mat-toolbar>

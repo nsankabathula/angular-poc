@@ -1,2 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-nav></app-nav>
+
+
+
+<mat-grid-list cols="1" rowHeight="4:1">
+    <mat-grid-tile-header>
+        <app-nav></app-nav>
+    </mat-grid-tile-header>
+    <mat-grid-tile>
+        <router-outlet></router-outlet>
+    </mat-grid-tile>
+    <!--<mat-grid-tile-footer> Footer</mat-grid-tile-footer>-->
+</mat-grid-list>

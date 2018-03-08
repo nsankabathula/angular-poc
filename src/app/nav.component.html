@@ -1,12 +1,25 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <span>Logo</span>
+        <span>
+            <i class="material-icons md-48">face</i>
+            &nbsp; FEATR
+            <!--Futures Exchanges Audit Trail Reporting-->
+        </span>
+
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu" overlapTrigger=f alse>
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+        </mat-menu>
 
 
         <span class="example-fill-remaining-space"></span>
 
         <button mat-button>About</button>
-        <button mat-button>Services</button>
-        <button mat-button>Contact</button>
+
+        <i class="material-icons md-48">perm_identity</i> &nbsp;
+
+        <i class="material-icons md-48">help</i>
+
     </mat-toolbar-row>
 </mat-toolbar>

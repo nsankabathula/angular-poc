@@ -1,16 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
-import { AppNavComponent } from './nav.component';
+
 import { AppReportComponent } from './reports/report.component';
+import { AppFilterComponent } from './reports/filters/filters.component';
+import { AppReportGridComponent } from './reports/grid/grid.component';
 
 import { HomeComponent } from './basic/home.component';
 import { PageNotFoundComponent } from './basic/pagenotfound.component';
+import { AppNavComponent } from './basic/nav.component';
 
 import { MaterialModule } from './shared/material.module';
+import { DataService } from './services/data.service';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -37,7 +41,9 @@ const appRoutes: Routes = [
     AppNavComponent,
     AppReportComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AppFilterComponent,
+    AppReportGridComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -48,9 +54,9 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule,
     MaterialModule,
-
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

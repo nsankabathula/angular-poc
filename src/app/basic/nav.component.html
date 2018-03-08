@@ -9,18 +9,18 @@
         </span>
 
         <button mat-icon-button [matMenuTriggerFor]="menu">
-            <i class="material-icons md-48">more_vert</i>
+            <i class="material-icons md-48">menu</i>
         </button>
         <mat-menu #menu="matMenu" overlapTrigger=false yPosition="below" xPosition="after">
 
             <button mat-menu-item routerLink="/home">Home</button>
-            <button mat-menu-item routerLink="/reports">Report</button>
+            <button mat-menu-item routerLink="/reports">Report View 1</button>
+            <button mat-menu-item routerLink="/reports">Report View 2</button>
         </mat-menu>
 
 
         <span class="example-fill-remaining-space"></span>
 
-        <button mat-button>About</button>
         <button mat-icon-button aria-label="profile">
             <i class="material-icons md-48">perm_identity</i>
         </button>

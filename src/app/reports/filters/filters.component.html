@@ -1,0 +1,150 @@
+<form class="example-form" [formGroup]="searchForm">
+
+    <!--
+            <mat-form-field class="example-full-width">
+        <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                <img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" />
+                <span>{{ state.name }}</span> |
+                <small>Population: {{state.population}}</small>
+            </mat-option>
+        </mat-autocomplete>
+        </mat-form-field>
+    -->
+    <mat-toolbar class="example-full-width">
+        <span>Search Criteria</span>
+        <span class="example-fill-remaining-space"></span>
+        <button mat-icon-button aria-label="clear_search" type="reset" (click)="stepper.reset(); resetForm()">
+            <i class="material-icons">clear_all</i>
+        </button>
+    </mat-toolbar>
+    <mat-vertical-stepper #stepper="matVerticalStepper">
+        <mat-step label="Date Range">
+            <div class="example-full-width">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="start" placeholder="Start" required formControlName="startDate">
+                    <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+                    <mat-datepicker #start></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="end" placeholder="End" required formControlName="endDate">
+                    <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+                    <mat-datepicker #end></mat-datepicker>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>
+                        <i class="material-icons">navigate_before</i>
+                    </button>
+                    <button mat-button matStepperNext>
+                        <i class="material-icons">navigate_next</i>
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+
+        <!--
+        <mat-step optional>
+            <div class="example-full-width">
+                <mat-form-field>
+                    <input matInput placeholder="Venue">
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>
+                        <i class="material-icons">navigate_before</i>
+                    </button>
+                    <button mat-button matStepperNext>
+                        <i class="material-icons">navigate_next</i>
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step optional>
+            <div class="example-full-width">
+                <mat-form-field>
+                    <input matInput placeholder="Symbol">
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>
+                        <i class="material-icons">navigate_before</i>
+                    </button>
+                    <button mat-button matStepperNext>
+                        <i class="material-icons">navigate_next</i>
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step optional>
+            <div class="example-full-width">
+                <mat-form-field>
+                    <input matInput placeholder="Trader">
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>
+                        <i class="material-icons">navigate_before</i>
+                    </button>
+                    <button mat-button matStepperNext>
+                        <i class="material-icons">navigate_next</i>
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+    -->
+        <mat-step label="Event Type">
+            <div class="example-full-width">
+                <mat-form-field>
+                    <mat-select placeholder="Event Type" multiple formControlName="eventType">
+                        <mat-option *ngFor="let type of data.eventTypes" [value]="type.value">{{type.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>
+                        <i class="material-icons">navigate_before</i>
+                    </button>
+                    <button mat-button matStepperNext>
+                        <i class="material-icons">navigate_next</i>
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step optional>
+            <div class="example-full-width">
+                <mat-form-field>
+                    <input matInput placeholder="Client" formControlName="client">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Venue" formControlName="venue">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Symbol" formControlName="symbol">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Trader" formControlName="trader">
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>
+                        <i class="material-icons">navigate_before</i>
+                    </button>
+                    <button mat-button matStepperNext>
+                        <i class="material-icons">navigate_next</i>
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step label="Done">
+            <div class="example-full-width">
+                <ng-template matStepLabel>Done</ng-template>
+                You are now done.
+                <div>
+                    <button mat-button matStepperPrevious>
+                        <i class="material-icons">navigate_before</i>
+                    </button>
+
+                    <button mat-button color="primary" type="submit" [disabled]="searchForm.status !== 'VALID'" (click)="onDoneClick()">
+                        <i class="material-icons">done_all</i>
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</form>

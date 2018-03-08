@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 // import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatInputModule, MatNativeDateModule, MatListModule, MatSelectModule } from '@angular/material';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,16 +12,26 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatTableModule } from '@angular/material/table';
+
 
 @NgModule({
   imports: [MatButtonModule, MatCheckboxModule, MatIconModule,
     MatToolbarModule, BrowserAnimationsModule, MatMenuModule,
     MatGridListModule, MatSidenavModule, MatSlideToggleModule,
-    MatChipsModule],
+    MatChipsModule, MatFormFieldModule, MatDatepickerModule,
+    MatNativeDateModule, MatInputModule, MatListModule,
+    MatStepperModule, MatSelectModule, MatTableModule],
   exports: [MatButtonModule, MatCheckboxModule, MatIconModule,
     MatToolbarModule, BrowserAnimationsModule, MatMenuModule,
     MatGridListModule, MatSidenavModule, MatSlideToggleModule,
-    MatChipsModule],
+    MatChipsModule, MatFormFieldModule, MatDatepickerModule,
+    MatNativeDateModule, MatInputModule, MatListModule,
+    MatStepperModule, MatSelectModule, MatTableModule],
 })
 export class MaterialModule {
 }

@@ -1,20 +1,27 @@
 .example-container {
   position: absolute;
-  top: 60px;
-  bottom: 60px;
-  left: 7px;
-  right: 0;
+  flex-direction: column;
+  display: flex;
+  height:92%;
+  width:99%;
+  border: 0px solid green;/*debug*/
+  padding: 2px;
+  margin-bottom: 16px;
 }
 
 .example-sidenav {
-  align-items: center;
+  align-items: top;
   display: flex;
-  width: 200px;
+  width: 30%;
+  justify-content: center;
   /*background:#3f51b5;
   align-items: center;
   display: flex;
-  justify-content: center;*/
-  border-color: #3f51b5;
+  justify-content: center;
+  background: #3f51b5;
+  */
+  
+  border: 0px solid red; /*debug*/
 }
 
 .example-header {
@@ -29,4 +36,15 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.example-full-width {
+  width: 100%;
+  border: 0px solid red; /*debug*/
 }

@@ -8,7 +8,7 @@ with NPM 3 or higher.
 ## Installation
 
 **BEFORE YOU INSTALL:** please read the [prerequisites](#prerequisites)
-```bash
+
 npm install -g @angular/cli
 
 ## Development server

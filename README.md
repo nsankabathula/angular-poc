@@ -9,9 +9,15 @@ with NPM 3 or higher.
 
 **BEFORE YOU INSTALL:** please read the [prerequisites](#prerequisites)
 
-npm install -g @angular/cli
+1. git clone https://github.com/nsankabathula/angular-poc.git
 
-## Development server
+2. cd angular-poc
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+3. npm install
+
+**IF ANY ERRORS**: npm install -g @angular/cli
+
+4. ng serve
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
 

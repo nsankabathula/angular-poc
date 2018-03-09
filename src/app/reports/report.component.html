@@ -6,10 +6,11 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <mat-toolbar color="primary" class="mat-elevation-z24">
+        <mat-toolbar class="mat-elevation-z24">
 
             <mat-chip-list #chipList>
-                <mat-chip *ngFor="let filter of filters" [selectable]="selectable" [removable]="removable" (remove)="remove(filter)">
+                <mat-chip *ngFor="let filter of filters; index as i " [title]="filter.title" [selectable]="filter.selectable" [removable]="filter.removable"
+                    (remove)="remove(filter, i )">
                     {{filter.name}}
                     <mat-icon matChipRemove *ngIf="filter.removable">cancel</mat-icon>
                 </mat-chip>
@@ -19,11 +20,11 @@
             <button mat-icon-button aria-label="download" [matMenuTriggerFor]="downlodMenu">
                 <i class="material-icons">file_download</i>
             </button>
-            <mat-menu #downlodMenu="matMenu" overlapTrigger=false yPosition="below" xPosition="after">
+            <mat-menu #downlodMenu="matMenu" overlapTrigger=false yPosition="below" xPosition="after" title="Pending implementaion">
 
-                <button mat-menu-item>CME</button>
-                <button mat-menu-item>Generic</button>
-                <button mat-menu-item>ICE</button>
+                <button mat-menu-item disabled>CME</button>
+                <button mat-menu-item disabled>Generic</button>
+                <button mat-menu-item disabled>ICE</button>
             </mat-menu>
             <mat-slide-toggle (click)="sidenav.toggle()"></mat-slide-toggle>
         </mat-toolbar>

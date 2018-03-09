@@ -1,8 +1,11 @@
+declare var require: any;
+
 import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
@@ -10,45 +13,20 @@ import { map } from 'rxjs/operators/map';
 
 import { DataService } from '../../services/data.service';
 import { Subject } from 'rxjs/Subject';
+import { IElementMeta, IElement, ISearch } from '../../model/data.model';
 
 
-export interface ISearch {
-    criteria: any;
-    data: any;
-    isEmpty: boolean;
-}
+
+const ELEMENT_META: IElementMeta[] = require('../../data/meta.data.json');
 
 
-export interface Element {
-    name: string;
-    position: number;
-    weight: number;
-    symbol: string;
-}
+const ELEMENT_DATA: IElement[] = require('../../data/element.data.json');
 
-const ELEMENT_DATA: Element[] = [
-    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-    { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-    { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-    { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-    { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-    { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-    { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-    { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-    { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-    { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-    { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
-];
-
+const WEEKDAY_FILTER = (d: Date): boolean => {
+    const day = d.getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+};
 
 @Component({
     selector: 'app-report-filters',
@@ -56,8 +34,12 @@ const ELEMENT_DATA: Element[] = [
     styleUrls: ['./filters.component.css']
 })
 export class AppFilterComponent {
+    isLinear = true;
     searchForm: FormGroup;
-
+    weekDayFilter = WEEKDAY_FILTER;
+    maxStartDate: Date = new Date();
+    maxEndDate: Date = new Date();
+    minEndDate: Date = new Date()
     @Output()
     searchCriteriaChanged: EventEmitter<ISearch> = new EventEmitter<ISearch>();
 
@@ -67,6 +49,8 @@ export class AppFilterComponent {
 
 
     constructor(private dataService: DataService, private fb: FormBuilder) {
+
+
         this.createForm();
         dataService.getFilterData().subscribe(
             (res) => {
@@ -83,22 +67,45 @@ export class AppFilterComponent {
 
     createForm() {
         this.searchForm = this.fb.group({
-            startDate: [null, Validators.required], // <--- the FormControl called "name"
-            endDate: [null, Validators.required],
-            client: [null],
-            venue: [null],
-            symbol: [null],
-            trader: [null],
+            startDate: [{ value: null }, Validators.required], // <--- the FormControl called "name"
+            endDate: [{ value: null }, Validators.required],
+            client: [null, Validators.maxLength(10)],
+            venue: [null, Validators.maxLength(10)],
+            symbol: [null, Validators.maxLength(10)],
+            trader: [null, Validators.maxLength(10)],
             eventType: [[], Validators.required]
-        });
+        }, { validator: this.dateLessThan('startDate', 'endDate') });
     }
 
     private onDoneClick($event) {
-        this.searchCriteriaChanged.emit(<ISearch>{ criteria: this.searchForm.value, data: ELEMENT_DATA, isEmpty: false });
+        console.log(this.searchForm);
+        this.searchCriteriaChanged.emit(<ISearch>{
+            criteria: this.searchForm.value, data: ELEMENT_DATA, isEmpty: false,
+            meta: ELEMENT_META
+        });
     }
 
     private resetForm() {
         this.searchForm.reset();
-        this.searchCriteriaChanged.emit(<ISearch>{ criteria: {}, data: [], isEmpty: true });
+        this.searchCriteriaChanged.emit(<ISearch>{ criteria: {}, data: ELEMENT_DATA, isEmpty: true, meta: ELEMENT_META });
     }
+
+    private dateLessThan(from: string, to: string) {
+        return (group: FormGroup): { [key: string]: any } => {
+            const f = group.controls[from];
+            const t = group.controls[to];
+            if (f.value > t.value) {
+                return {
+                    dates: 'Date from should be less than Date to'
+                };
+            }
+            return {};
+        };
+    }
+
+    startDateChange(type: string, event: MatDatepickerInputEvent<Date>) {
+        console.log(type, event);
+        this.minEndDate = event.value;
+    }
+
 }

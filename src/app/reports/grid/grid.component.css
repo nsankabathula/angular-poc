@@ -20,3 +20,7 @@
   
   max-height: 765.4px;
 }
+
+.mat-spinner {
+  align-items: center;
+}

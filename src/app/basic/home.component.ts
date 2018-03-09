@@ -3,9 +3,8 @@ import { MatMenuTrigger } from '@angular/material';
 
 @Component({
     selector: 'app-home',
-    template: `
-    <h4>Home page</h4>
-    `
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
 

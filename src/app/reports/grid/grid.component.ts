@@ -1,7 +1,9 @@
+declare var require: any;
+
 import { Component, ViewChild, Input, SimpleChanges, SimpleChange, OnChanges } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material';
-
+import { IElementMeta, IElement, ISearch } from '../../model/data.model';
 
 
 @Component({
@@ -11,18 +13,54 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class AppReportGridComponent implements OnChanges {
 
-    displayedColumns = ['position', 'name', 'weight', 'symbol'];
+    // tslint:disable-next-line:no-inferrable-types
+    spinner = { show: true };
 
     @Input()
-    source = [];
+    source: IElement[] = [];
+
+    meta: IElementMeta[] = require('../../data/meta.data.json');
+    displayedColumns = [];
 
     private dataSource = new MatTableDataSource(this.source);
 
+    constructor() {
+
+        this.displayedColumns = this.meta.
+            filter((metaInfo: IElementMeta) => {
+                return metaInfo.display;
+            })
+            .map((metaInfo: IElementMeta) => {
+                return metaInfo.name;
+            });
+    }
+
     selection = new SelectionModel<Element>(true, []);
 
+    toggleSpinner(show: boolean) {
+        this.spinner = (show !== null && show !== undefined) ? { show: show } : { show: !this.spinner.show };
+    }
+
     ngOnChanges(changes: SimpleChanges) {
-        const source: SimpleChange = changes.source;
-        this.dataSource = new MatTableDataSource(source.currentValue);
+        this.toggleSpinner(true);
+
+        setTimeout(() => {
+            this.toggleSpinner(null);
+            const source: SimpleChange = changes.source;
+            this.dataSource = new MatTableDataSource(source.currentValue);
+
+        }, 2000);
+
+        /*
+        const meta: SimpleChange = changes.meta;
+        this.displayedColumns = [].concat(meta.currentValue.
+            filter((metaInfo: IElementMeta) => {
+                return metaInfo.display;
+            })
+            .map((metaInfo: IElementMeta) => {
+                return metaInfo.name;
+            }));
+            */
     }
 
     applyFilter(filterValue: string) {
@@ -39,9 +77,11 @@ export class AppReportGridComponent implements OnChanges {
     }
 
     /** Selects all rows if they are not all selected; otherwise clear selection. */
+    /*
     masterToggle() {
         this.isAllSelected() ?
             this.selection.clear() :
             this.dataSource.data.forEach(row => this.selection.select(row));
     }
+    */
 }

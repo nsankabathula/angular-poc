@@ -3,19 +3,23 @@
         <span>
             <button mat-icon-button aria-label="home" routerLink="/home">
                 <i class="material-icons md-48">face</i>
-            </button>
-            App Name
+                <!--<img mat-card-image src="../assets/citi.png" alt="CITI">-->
+
+            </button> &nbsp; CITI APP
             <!--Futures Exchanges Audit Trail Reporting-->
         </span>
 
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-            <i class="material-icons md-48">menu</i>
+        &nbsp;
+
+        <button mat-button [matMenuTriggerFor]="menu">
+            <!--<i class="material-icons md-48">menu</i>-->
+            Reports
         </button>
+
         <mat-menu #menu="matMenu" overlapTrigger=false yPosition="below" xPosition="after">
 
-            <button mat-menu-item routerLink="/home">Home</button>
             <button mat-menu-item routerLink="/reports">Report View 1</button>
-            <button mat-menu-item routerLink="/reports">Report View 2</button>
+            <!--<button mat-menu-item routerLink="/reports">Report View 2</button>-->
         </mat-menu>
 
 

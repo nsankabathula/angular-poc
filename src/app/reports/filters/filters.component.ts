@@ -39,7 +39,7 @@ export class AppFilterComponent {
     weekDayFilter = WEEKDAY_FILTER;
     maxStartDate: Date = new Date();
     maxEndDate: Date = new Date();
-    minEndDate: Date = new Date()
+    minEndDate: Date = new Date();
     @Output()
     searchCriteriaChanged: EventEmitter<ISearch> = new EventEmitter<ISearch>();
 

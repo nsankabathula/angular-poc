@@ -1,0 +1,22 @@
+[
+    {
+        "method": "GET",
+        "url": "log",
+        "body": null
+    },
+    {
+        "method": "POST",
+        "url": "log",
+        "body": null
+    },
+    {
+        "method": "PUT",
+        "url": "log",
+        "body": null
+    },
+    {
+        "method": "DELETE",
+        "url": "log",
+        "body": null
+    }
+]

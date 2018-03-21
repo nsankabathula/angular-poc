@@ -2,9 +2,19 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
+    "sourceMap": true,
+    "traceResolution": true,
     "baseUrl": "./",
     "module": "es2015",
-    "types": []
+    "types": [],
+    "paths": {
+      "shared/*": [
+        "app/shared/*"
+      ],
+      "rest/*": [
+        "app/rest/*"
+      ]
+    }
   },
   "exclude": [
     "test.ts",

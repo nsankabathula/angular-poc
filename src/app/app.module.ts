@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';  // replaces previous Http service
 
 
 import { AppComponent } from './app.component';
@@ -13,27 +15,15 @@ import { HomeComponent } from './basic/home.component';
 import { PageNotFoundComponent } from './basic/pagenotfound.component';
 import { AppNavComponent } from './basic/nav.component';
 
-import { MaterialModule } from './shared/material.module';
+import { MaterialModule } from 'shared/material.module';
+import { SharedModule } from 'shared/shared.module';
 import { DataService } from './services/data.service';
 
 import { RouterModule, Routes } from '@angular/router';
 
-const appRoutes: Routes = [
-  { path: 'reports', component: AppReportComponent },
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-    data: { title: 'Heroes List' }
-  },
-  { path: '**', component: PageNotFoundComponent }
-  /*{ path: 'hero/:id', component: null },
-  */
-];
+import { AppRoutingModule } from './app.routes';
+
+
 
 @NgModule({
   declarations: [
@@ -46,17 +36,17 @@ const appRoutes: Routes = [
     AppReportGridComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
+    AppRoutingModule,
     FormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule,
-    MaterialModule,
-    ReactiveFormsModule
+    // MaterialModule,
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [DataService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule {

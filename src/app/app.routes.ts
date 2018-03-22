@@ -30,7 +30,7 @@ const APP_ROUTES: Routes = [
     imports: [
         RouterModule.forRoot(
             APP_ROUTES,
-            { enableTracing: true } // <-- debugging purposes only
+            { enableTracing: false } // <-- debugging purposes only
         )
     ],
     exports: [

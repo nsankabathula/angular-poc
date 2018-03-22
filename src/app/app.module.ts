@@ -15,8 +15,8 @@ import { HomeComponent } from './basic/home.component';
 import { PageNotFoundComponent } from './basic/pagenotfound.component';
 import { AppNavComponent } from './basic/nav.component';
 
-import { MaterialModule } from 'shared/material.module';
-import { SharedModule } from 'shared/shared.module';
+import { MaterialModule } from '@shared/material.module';
+import { SharedModule } from '@shared/shared.module';
 import { DataService } from './services/data.service';
 
 import { RouterModule, Routes } from '@angular/router';

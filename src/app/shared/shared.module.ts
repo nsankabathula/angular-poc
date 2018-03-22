@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';  // replaces previous Http service
 import { ConfigService } from './services/config.service';
-import { MaterialModule } from 'shared/material.module';
+import { MaterialModule } from '@shared/material.module';
+
 
 @NgModule({
     declarations: [],

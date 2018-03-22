@@ -1,5 +1,38 @@
-<mat-selection-list>
-    <mat-list-option *ngFor="let data of REST_DATA">
-        {{data |json}}
-    </mat-list-option>
-</mat-selection-list>
+<div class="example-container">
+
+    <mat-tab-group class="demo-tab-group" dynamicHeight="true" (selectedTabChange)="tabChanged($event)">
+        <mat-tab *ngFor="let data of REST_DATA" label={{data.method}}>
+            <form class="example-form" [formGroup]="restFormGroup">
+                <mat-card>
+                    <mat-card-content>
+
+
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="url" type="URL" value={{data.url}} disabled>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" *ngIf="data.bodyRequired">
+                            <textarea matInput type="text" formControlName="body" placeholder="BODY" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="20"></textarea>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" *ngIf="data.result">
+                            <textarea matInput type="text" disabled matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="20" [value]="data.result"></textarea>
+                        </mat-form-field>
+
+
+
+
+
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button [disabled]="!restFormGroup.valid" type="submit" (click)="makeRequest(data)">
+                            Request
+                        </button>
+                    </mat-card-actions>
+
+                </mat-card>
+            </form>
+
+        </mat-tab>
+    </mat-tab-group>
+
+</div>

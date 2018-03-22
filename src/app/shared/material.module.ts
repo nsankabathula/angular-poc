@@ -8,7 +8,7 @@ import {
   MatChipsModule, MatFormFieldModule, MatDatepickerModule,
   MatNativeDateModule, MatInputModule, MatListModule,
   MatStepperModule, MatSelectModule, MatTableModule, MatProgressSpinnerModule,
-  MatCardModule
+  MatCardModule, MatTabsModule
 } from '@angular/material';
 
 
@@ -23,7 +23,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatChipsModule, MatFormFieldModule, MatDatepickerModule,
     MatNativeDateModule, MatInputModule, MatListModule,
     MatStepperModule, MatSelectModule, MatTableModule, MatProgressSpinnerModule,
-    MatCardModule,
+    MatCardModule, MatTabsModule
   ],
   exports: [
     MatButtonModule, MatCheckboxModule, MatIconModule,
@@ -32,7 +32,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatChipsModule, MatFormFieldModule, MatDatepickerModule,
     MatNativeDateModule, MatInputModule, MatListModule,
     MatStepperModule, MatSelectModule, MatTableModule, MatProgressSpinnerModule,
-    MatCardModule
+    MatCardModule, MatTabsModule
   ],
 })
 export class MaterialModule {

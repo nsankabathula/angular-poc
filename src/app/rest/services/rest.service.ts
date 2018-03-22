@@ -5,8 +5,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 
-import { ConfigService } from 'shared/services/config.service';
-import { IConfig } from 'shared/model/config.model';
+import { ConfigService } from '@shared/services/config.service';
+import { IConfig } from '@shared/model/config.model';
 
 import { IRestModel } from '../model/rest.model';
 
@@ -49,7 +49,7 @@ export class RestService {
     }
 
     post(url, body): Observable<any> {
-        return this.http.post(url, body)
+        return this.http.post(url, body, httpOptions)
             .pipe(
             catchError(this.handleError)
             );

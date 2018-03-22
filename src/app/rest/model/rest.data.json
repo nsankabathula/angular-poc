@@ -2,21 +2,25 @@
     {
         "method": "GET",
         "url": "log",
-        "body": null
+        "body": null,
+        "bodyRequired": false
     },
     {
         "method": "POST",
         "url": "log",
-        "body": null
+        "body": null,
+        "bodyRequired": true
     },
     {
         "method": "PUT",
         "url": "log",
-        "body": null
+        "body": null,
+        "bodyRequired": true
     },
     {
         "method": "DELETE",
         "url": "log",
-        "body": null
+        "body": null,
+        "bodyRequired": false
     }
 ]

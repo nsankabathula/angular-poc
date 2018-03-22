@@ -8,10 +8,10 @@
     "module": "es2015",
     "types": [],
     "paths": {
-      "shared/*": [
+      "@shared/*": [
         "app/shared/*"
       ],
-      "rest/*": [
+      "@rest/*": [
         "app/rest/*"
       ]
     }
